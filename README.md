@@ -16,3 +16,5 @@ Firstly, I need to look up my home network IP on my windows PC and find the defa
 I then went back into my VM and went onto properties on the network adaptor and under the TCP/IPv4 setting I set my VM's IP.
 <img width="1069" height="876" alt="Screenshot 2026-07-01 214327" src="https://github.com/user-attachments/assets/947001dd-fd7a-4132-9a7a-c36920d28338" />
 
+STEP 3:
+The next step was to promote to a domain controller, in order for me to do that I had to go into the server manager and add a new forest.
