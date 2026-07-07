@@ -1,5 +1,5 @@
 # Active Directory
-hands on work on my own active directory
+hands on work on my own active directory for IT/Help Desk roles
 
 -7/1/26
 #Ive created my very own virtual machine in order to further advance my IT skills as I look to transition into the workforce.
