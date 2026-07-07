@@ -21,3 +21,7 @@ The next step was to promote to a domain controller, in order for me to do that 
 under the root domain name, corp.local, I then proceeded with creating a DSRM password incase of a disaster recovery need. I left the rest of the setting as default and went on to install the forest. AFter the install, I went by into the server manager and now had an active directory domian server and DNS.
 <img width="1021" height="842" alt="image" src="https://github.com/user-attachments/assets/e8ed2951-2a39-4188-818a-716e3ecd9490" />
 
+STEP 4: Now I will check and vertify that I installed everything correctly. I went to the tools section of my server manager, clicked on active directory users and computers, and saw that I had my corp.local tree with the right folders underneath it. Another thing I did to check that I installed everything correctly, I clicked on the domain controllers folder and saw that I had DC01 listed inside, which means that I successfully built an active directory domain from scratch!!!
+<img width="1023" height="853" alt="image" src="https://github.com/user-attachments/assets/568c0779-99b9-47da-b4be-d09a5af391a6" />
+
+
