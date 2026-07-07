@@ -17,4 +17,7 @@ I then went back into my VM and went onto properties on the network adaptor and 
 <img width="1069" height="876" alt="Screenshot 2026-07-01 214327" src="https://github.com/user-attachments/assets/947001dd-fd7a-4132-9a7a-c36920d28338" />
 
 STEP 3:
-The next step was to promote to a domain controller, in order for me to do that I had to go into the server manager and add a new forest.
+The next step was to promote to a domain controller, in order for me to do that I had to go into the server manager and add a new forest. I called my new forest
+under the root domain name, corp.local, I then proceeded with creating a DSRM password incase of a disaster recovery need. I left the rest of the setting as default and went on to install the forest. AFter the install, I went by into the server manager and now had an active directory domian server and DNS.
+<img width="1021" height="842" alt="image" src="https://github.com/user-attachments/assets/e8ed2951-2a39-4188-818a-716e3ecd9490" />
+
