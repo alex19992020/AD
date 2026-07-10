@@ -28,4 +28,8 @@ The reason I created a forest when setting up an active directiory is because it
 STEP 4: Now I will check and vertify that I installed everything correctly. I went to the tools section of my server manager, clicked on active directory users and computers, and saw that I had my corp.local tree with the right folders underneath it. Another thing I did to check that I installed everything correctly, I clicked on the domain controllers folder and saw that I had DC01 listed inside, which means that I successfully built an active directory domain from scratch!!!
 <img width="1023" height="853" alt="image" src="https://github.com/user-attachments/assets/568c0779-99b9-47da-b4be-d09a5af391a6" />
 
+STEP 5: Now my next step was to create a windows client VM, but this time instead of the windows server iso, we will use the windows 11 pro iso key. So I went on to create my client01 user and install windows 11 pro on it. I had a lot of issues and errors come up when trying to install windows 11 pro. For example, it told me that I didn't meet windows 11 system requirements on my virtual computer. It told me that I needed more memory, that I needed TMP 2.0 or higher, and that I needed secure boot enabled. Luckily, I've gone through these issues before with my own pc since I built it myself and installed all the right software/drivers. I knew to fix these issues in the bios so I did. Once those issues were solved, I was able to install windows 11 pro on the client01s virtual computer. 
+
+STEP 6: My next step was to join client01 to the corp.local domain.  
+
 
