@@ -30,6 +30,19 @@ STEP 4: Now I will check and vertify that I installed everything correctly. I we
 
 STEP 5: Now my next step was to create a windows client VM, but this time instead of the windows server iso, we will use the windows 11 pro iso key. So I went on to create my client01 user and install windows 11 pro on it. I had a lot of issues and errors come up when trying to install windows 11 pro. For example, it told me that I didn't meet windows 11 system requirements on my virtual computer. It told me that I needed more memory, that I needed TMP 2.0 or higher, and that I needed secure boot enabled. Luckily, I've gone through these issues before with my own pc since I built it myself and installed all the right software/drivers. I knew to fix these issues in the bios so I did. Once those issues were solved, I was able to install windows 11 pro on the client01s virtual computer. 
 
-STEP 6: My next step was to join client01 to the corp.local domain.  
+STEP 6: My next step was to join client01 to the corp.local domain. In order to do this, in my client01 account, I had to set a static IP so that it could point to DC01 so we could connect to doamin controller. 
+<img width="1492" height="844" alt="image" src="https://github.com/user-attachments/assets/b5f64fef-142f-4cbd-8af6-338f3aa4bf70" />
+As you can see from the picture above, we put our preferred DNS server to the DC01 so that client01 can find corp.local when we join it to the domain. We then went on to rename the pc using the advanced settings because that would let us rename and join a domain at the same time. I renamed it to Client01 and under memeber of we selected domain corp.local. It asked for the admin username and password and it welcomed us to the domain as seen below.
+<img width="1495" height="859" alt="Screenshot 2026-07-09 230841" src="https://github.com/user-attachments/assets/3aa03770-b40e-4e00-a558-a9870315320b" />
+
+Why did I do this? Well now that we were welcomed into the domain, it's pretty much trusting DC01 to manage this user, so any domain user created on DC01 can log into this machine. All companies go through this when a new employee pc has to be set up.
+
+Now to log in as a domain user, on the client01 login screen, I went onto other user and logged in as CORP\Administrator, and now I was logged in as domain user, NOT local user.
+Why I used the CORP\ prefix is to vertify this login against the CORP domain on DC01, NOT the local machine. This is important because this is how all employees log into their work computer, you want their credentials stored on the domain controller, not the local computer. A good example of this is if a user forgets their password, I as an IT worker cab reset it on the server and it would work on any domain computer instantly.
+
+I HAVE NOW FULLY CREATED A WORKING ACTIVE DIRECTORY WITH A DOMAIN CONTROLLER AND CLIENT MACHINE JOINED TO THE DOMAIN FROM SCRATCH.
+
+
+
 
 
