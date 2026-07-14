@@ -40,7 +40,11 @@ Why did I do this? Well now that we were welcomed into the domain, it's pretty m
 Now to log in as a domain user, on the client01 login screen, I went onto other user and logged in as CORP\Administrator, and now I was logged in as domain user, NOT local user.
 Why I used the CORP\ prefix is to vertify this login against the CORP domain on DC01, NOT the local machine. This is important because this is how all employees log into their work computer, you want their credentials stored on the domain controller, not the local computer. A good example of this is if a user forgets their password, I as an IT worker cab reset it on the server and it would work on any domain computer instantly.
 
+SUMMARY:
+After downloading and setting up my virtual machine lab, I created a DC01 user which will be my server(domain controller) or brain of the network. It's the machine that will hold all users or employees, will vertify logins, enfoce the rules on the network, and keep track of every computer that joins the domain. In a real company, there will be one or more of these in a server room where regualr employees don't touch.
+
 I HAVE NOW FULLY CREATED A WORKING ACTIVE DIRECTORY WITH A DOMAIN CONTROLLER AND CLIENT MACHINE JOINED TO THE DOMAIN FROM SCRATCH.
+
 
 
 
