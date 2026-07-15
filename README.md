@@ -45,6 +45,8 @@ After downloading and setting up my virtual machine lab, I created a DC01 user w
 
 I HAVE NOW FULLY CREATED A WORKING ACTIVE DIRECTORY WITH A DOMAIN CONTROLLER AND CLIENT MACHINE JOINED TO THE DOMAIN FROM SCRATCH.
 
+Next step in my project will be to simulate everyday tasks that an IT/help desk employee would be tasked. So I will go into my newly created active directory and create user accounts and organizational units.
+
 
 
 
