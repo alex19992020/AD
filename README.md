@@ -55,6 +55,9 @@ Why did I create OU's? Well because in a real company, users are organized by de
 I have now created users under each OU with the same naming format as seen in the picture below. I kept the naming format consistent because in a real company, the format is always the same/consistant.
 <img width="1021" height="853" alt="image" src="https://github.com/user-attachments/assets/53cc5f76-09cd-44bf-9cd2-e6adaa36cd21" />
 
+Now that I have OUs and users, I will start to practice common IT/help desk everyday tasks.
+
+
 
 
 
