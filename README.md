@@ -47,6 +47,10 @@ I HAVE NOW FULLY CREATED A WORKING ACTIVE DIRECTORY WITH A DOMAIN CONTROLLER AND
 
 Next step in my project will be to simulate everyday tasks that an IT/help desk employee would be tasked. So I will go into my newly created active directory and create user accounts and organizational units.
 
+In order to create new users and OU's, I need to access the server manager, go to tools, then go into active directory users and computers. I know to go here because this is the main tool to use when dealing with mostly everything in the AD. I know to go into server manager because this is the control panel for my entire domain. I created 3 OU's here, HR, IT, and Sales. They will live here in the domain. Below you can see the 3 OU's that I've created.
+<img width="1024" height="850" alt="image" src="https://github.com/user-attachments/assets/b1fd7747-ba7a-4aa1-abd7-97e64d8c7eaf" />
+
+
 
 
 
