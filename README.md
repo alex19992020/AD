@@ -50,6 +50,8 @@ Next step in my project will be to simulate everyday tasks that an IT/help desk 
 In order to create new users and OU's, I need to access the server manager, go to tools, then go into active directory users and computers. I know to go here because this is the main tool to use when dealing with mostly everything in the AD. I know to go into server manager because this is the control panel for my entire domain. I created 3 OU's here, HR, IT, and Sales. They will live here in the domain. Below you can see the 3 OU's that I've created.
 <img width="1024" height="850" alt="image" src="https://github.com/user-attachments/assets/b1fd7747-ba7a-4aa1-abd7-97e64d8c7eaf" />
 
+Why did I create OU's? Well because in a real company, users are organized by department. Having OU's allows me working in IT to apply different rules to different departments. For example, HR might have stricter password policies, or the Sales team might get a shared network drive. You can't do any of that without OUs. 
+
 
 
 
