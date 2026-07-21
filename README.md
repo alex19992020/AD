@@ -65,6 +65,10 @@ Now I will practice disabling and enabling a user account.
 In order to disable and enable a user, I must rick-click the user, press disable account and now you should see a small down arrow on the users icon, which means we have disabled the account, you can easily enable the account by rick clicking the user again and pressing enable account. Below you can see the small down arrow in the user jane smith, showing that her account is disabled at the moment. It's important to know how to disable and enable user accounts because when an employee goes on leave or gets terminated, IT doesn't immediately delete their account — they disable it first. This preserves their data and settings while blocking access. Deleting comes later after everything is confirmed.
 <img width="1027" height="283" alt="Screenshot 2026-07-20 194759" src="https://github.com/user-attachments/assets/640d042e-77b9-4d2a-9616-c949965c7dd9" />
 
+Now what would happen if a user forgot his/her account password, was inputting the wrong password and after 5 attempts got locked out of her account? As a help desk/IT employee, in my admin account, I would right click the user, go to properties, then click on account tab, there will be an "unlock account" checkbox, it will be checked because the user used all 5 password attempts and got locked out. As IT support, I would uncheck that box and go about resetting the password for the user. It's important to know where to unlock the user account because in real life, companies set a policy that locks accounts after a certain number of failed login attempts — usually 3 to 5. This prevents hackers from guessing passwords. But it also means users who forget their password get locked out, which is where help desk like myself comes in. Below you can see the unchecked checkbox.
+<img width="1059" height="653" alt="Screenshot 2026-07-20 204152" src="https://github.com/user-attachments/assets/ede42cba-f85d-4d4f-9201-e9acee57807e" />
+
+
 
 
 
