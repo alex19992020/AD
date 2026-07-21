@@ -68,6 +68,15 @@ In order to disable and enable a user, I must rick-click the user, press disable
 Now what would happen if a user forgot his/her account password, was inputting the wrong password and after 5 attempts got locked out of her account? As a help desk/IT employee, in my admin account, I would right click the user, go to properties, then click on account tab, there will be an "unlock account" checkbox, it will be checked because the user used all 5 password attempts and got locked out. As IT support, I would uncheck that box and go about resetting the password for the user. It's important to know where to unlock the user account because in real life, companies set a policy that locks accounts after a certain number of failed login attempts — usually 3 to 5. This prevents hackers from guessing passwords. But it also means users who forget their password get locked out, which is where help desk like myself comes in. Below you can see the unchecked checkbox.
 <img width="1059" height="653" alt="Screenshot 2026-07-20 204152" src="https://github.com/user-attachments/assets/ede42cba-f85d-4d4f-9201-e9acee57807e" />
 
+Now I will showcase what I know about group policy (GPO), I know that GPO is how IT pushes settings and rules to computers and users across the whole domain automatically. Instead of going to every single computer and changing settings manually, you set it once on DC01 and it applies everywhere. Here below, I have my default group policy, which is the baseline policy that applies to everything in the doamin, I got here by going into the server manager, going into tools, then group policy management, from there I expanded the forest, expanded domains, then expanded my corp.local. 
+<img width="863" height="791" alt="image" src="https://github.com/user-attachments/assets/bc7e2b8c-205c-40e4-934a-7917d2ce81e3" />
+
+Now I will create a password policy GPO. In order to do that, I must right click my corp.local forest, click on "create a GPO in this domain and link it here", I will name it password policy. Now that I have that I will right click password policy, hit edit, then navigate to Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Password Policy. Here is what it looks like before defining the policy, as you can see below, nothing is defined.
+<img width="784" height="342" alt="image" src="https://github.com/user-attachments/assets/7df5b066-f66e-43f6-9382-ce0a2bb2e9ce" />
+
+
+
+
 
 
 
