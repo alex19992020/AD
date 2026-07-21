@@ -74,6 +74,8 @@ Now I will showcase what I know about group policy (GPO), I know that GPO is how
 Now I will create a password policy GPO. In order to do that, I must right click my corp.local forest, click on "create a GPO in this domain and link it here", I will name it password policy. Now that I have that I will right click password policy, hit edit, then navigate to Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Password Policy. Here is what it looks like before defining the policy, as you can see below, nothing is defined.
 <img width="784" height="342" alt="image" src="https://github.com/user-attachments/assets/7df5b066-f66e-43f6-9382-ce0a2bb2e9ce" />
 
+Now this is what my password policy looks like now after defining some policy settings,
+<img width="783" height="301" alt="image" src="https://github.com/user-attachments/assets/2f9d1406-35f1-476d-9500-a53bc41dcb5d" />
 
 
 
