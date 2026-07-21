@@ -77,6 +77,22 @@ Now I will create a password policy GPO. In order to do that, I must right click
 Now this is what my password policy looks like now after defining some policy settings,
 <img width="783" height="301" alt="image" src="https://github.com/user-attachments/assets/2f9d1406-35f1-476d-9500-a53bc41dcb5d" />
 
+Why did I do this? Well because I know that every company has a password policy. Without one users would set passwords like abc123 and never change them. As help desk I'll reference this policy constantly when users complain their password isn't being accepted and tell them exactly what the requirements are.
+
+Now I will create a desktop wallpaper GPO by following the same steps as before with the password policy but this time go into user config instead of computer config, I will enable desktop wallpaper, set a local path, and set the style to fill, as seen below,
+<img width="679" height="632" alt="image" src="https://github.com/user-attachments/assets/818f5087-6f5b-4539-aafa-2fa6266ff9ff" />
+
+And here below you can see that Desktop Wallpaper is now enabled,
+<img width="692" height="169" alt="image" src="https://github.com/user-attachments/assets/73a74962-5f96-4196-8167-84b4313734e2" />
+
+Why did I do this? Well because I know that companies use wallpaper policies to push their corporate branding to all machines. But more importantly this teaches me how GPOs work — I set it once and it applies to every computer in the domain automatically. In the future, I will know that the same concept applies to much more powerful policies like software installation, security settings, and drive mapping.
+
+Now I will show how to force apply a policy. 
+
+
+
+
+
 
 
 
