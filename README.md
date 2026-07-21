@@ -57,6 +57,12 @@ I have now created users under each OU with the same naming format as seen in th
 
 Now that I have OUs and users, I will start to practice common IT/help desk everyday tasks.
 
+A common IT/help desk issue is password resets and account lockouts. Below in the picture, a user forgot her password so as you can see, I'm resetting her password by creating a temporary one and enabling "user must change password at next logon" so that the next time she logs in, it forces her to make a new password that I won't know. As IT/help desk I should never know a users password because it's a security risk.
+<img width="1029" height="775" alt="image" src="https://github.com/user-attachments/assets/771e2cdc-90d9-4345-addd-fdda8ab9492a" />
+
+Now I will practice disabling and enabling a user account.
+
+
 
 
 
