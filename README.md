@@ -87,7 +87,11 @@ And here below you can see that Desktop Wallpaper is now enabled,
 
 Why did I do this? Well because I know that companies use wallpaper policies to push their corporate branding to all machines. But more importantly this teaches me how GPOs work — I set it once and it applies to every computer in the domain automatically. In the future, I will know that the same concept applies to much more powerful policies like software installation, security settings, and drive mapping.
 
-Now I will show how to force apply a policy. 
+Now I will show how to force apply a policy. In order to do that, I will log into my client01 account, then I will open the command prompt as admin, then type "gpupdate /force" Why use that command? Because in real help desk when I make a policy change and need it to apply immediately without waiting for a restart, this is the command I'll run. You can see below that forcing the policy worked.  
+<img width="663" height="253" alt="image" src="https://github.com/user-attachments/assets/02a89630-5107-49a0-868c-2706779dee7e" />
+
+
+
 
 
 
