@@ -97,6 +97,17 @@ The final skill I will showcase is security groups and sahred folder access. Thi
 
 Now why did I remove everyone? Because by default Windows shares are accessible to everyone on the network. That's a security risk. In a real company every shared folder has specific permissions — only the right people can access it.
 
+Now I will create security groups in the active directory. I will go to the HR OU, right click, create a group and name it HR-Team. Make the scope global and type security. As you can see below, I have created the security group.
+<img width="751" height="229" alt="image" src="https://github.com/user-attachments/assets/093c444a-5c9b-4354-879e-58546321746f" />
+
+Why did I pick security type over distribution? Well I know that distribution groups are used for email lists only, can't control access to anything, and thats not what we want. We want security group type because they are used to control access to resources like folders and printers and this is what we want.
+Why did I use global scope? because global groups can be used anywhere in the domain. This is the most common type I'll use in IT/help desk roles.
+
+Now I will give the HR-Team access to the folder, so I went to file explorer again and went into the security tab of the HR folder I created and gave them read & execute permissions as seen below.
+<img width="748" height="642" alt="image" src="https://github.com/user-attachments/assets/8aebbf4a-b588-4d25-9387-a4c19d4e6ef2" />
+
+Why Read & Execute and not Full Control? Because in real companies I'll give users the minimum permissions they need — this is called the principle of least privilege. HR staff need to read files, not delete or modify everything. This will limit damage if an account gets compromised.
+
 
 
 
