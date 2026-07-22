@@ -119,6 +119,23 @@ Why do I do these tests? Because this proves my security group is working correc
 Summary of everything I did:
 I built a home Active Directory lab from scratch with Windows Server 2022 and Windows 11. I practiced creating and managing user accounts, resetting passwords, unlocking accounts, building Group Policy Objects, and controlling folder access with security groups. I also troubleshot common issues like DNS misconfigurations, permission problems, and group membership token refreshes.
 
+Now I will showcase my knowledge of one of the most important tools in IT/help desk, that being the event viewer. I know that its basically a log of everything that happens on a Windows machine — logins, errors, warnings, system events. When something goes wrong, Event Viewer is usually the first place I'll look. For me to access event viewer, I'll press the windows key + R and type "eventvwr.msc" to open it. Below is me opening the event viewer.
+<img width="879" height="550" alt="image" src="https://github.com/user-attachments/assets/9fe4ce81-50c1-4f46-85be-51ff35c440f9" />
+I know that the left side has my window logs, which is the main logs I'll use, then I have the application, which has my errors from software and apps, then my security, which has my login attempts, account changes, and permission changes, lastly my system, which has the hardware and windows errors.
+
+Why do I use event viewer? Because at a real company, when a user calls saying "I can't log in" or "something weird is happening on my computer," Event Viewer tells you exactly what happened and when.
+
+Below is my security events, I know that each event has an event ID, which is a number that tells you what happened, the date/time, which tells me when it happened, and a level, which tells me information, warning, or error.
+<img width="878" height="545" alt="image" src="https://github.com/user-attachments/assets/ddb1793b-b30b-4bc8-8ddf-fdd94e97b2bb" />
+
+Below are the most important event ID's that I need to know as an IT/Help desk employee,
+<img width="404" height="281" alt="image" src="https://github.com/user-attachments/assets/07059cdf-ad19-43b7-a491-b8e5b19f6ad9" />
+
+
+
+
+
+
 
 
 
