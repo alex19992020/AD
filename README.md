@@ -134,6 +134,8 @@ Below are the most important event ID's that I need to know as a IT/Help desk em
 Now I will simulate a failed login by logging in as a user on the client01 VM and typing the wrong password for user jsmith 4 times. I will then go back to the event viewer and refresh it and look for event ID 4625, which will be my failed attempts. Below I have filtered for event ID 4625 and you can see my failed logon attempts.
 <img width="1017" height="845" alt="image" src="https://github.com/user-attachments/assets/915e8deb-72ea-427c-a5ee-f6424378b260" />
 
+Why is it important for me to look at the event viewer as a IT/help desk employee? Because in real help desk when a user gets locked out, I'll check Event Viewer to see how many failed attempts there were and where they came from. If someone's account shows 50 failed attempts from an unknown machine at 3am I'll know that that's a security incident, not just a forgotten password. Also, in the image above when I filtered to find the event 4625, it's because in a real environment security logs can have thousands of entries per day. Knowing how to filter quickly is an essential skill. I'll use this when investigating a specific incident or looking for a pattern.
+
 
 
 
