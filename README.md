@@ -30,8 +30,10 @@ STEP 4: Now I will check and vertify that I installed everything correctly. I we
 
 STEP 5: Now my next step was to create a windows client VM, but this time instead of the windows server iso, we will use the windows 11 pro iso key. So I went on to create my client01 user and install windows 11 pro on it. I had a lot of issues and errors come up when trying to install windows 11 pro. For example, it told me that I didn't meet windows 11 system requirements on my virtual computer. It told me that I needed more memory, that I needed TMP 2.0 or higher, and that I needed secure boot enabled. Luckily, I've gone through these issues before with my own pc since I built it myself and installed all the right software/drivers. I knew to fix these issues in the bios so I did. Once those issues were solved, I was able to install windows 11 pro on the client01s virtual computer. 
 
-STEP 6: My next step was to join client01 to the corp.local domain. In order to do this, in my client01 account, I had to set a static IP so that it could point to DC01 so we could connect to doamin controller. 
+STEP 6: My next step was to join client01 to the corp.local domain. In order to do this, in my client01 account, I had to set a static IP so that it could point to DC01 so we could connect to doamin controller.
+
 <img width="1492" height="844" alt="image" src="https://github.com/user-attachments/assets/b5f64fef-142f-4cbd-8af6-338f3aa4bf70" />
+
 As you can see from the picture above, we put our preferred DNS server to the DC01 so that client01 can find corp.local when we join it to the domain. We then went on to rename the pc using the advanced settings because that would let us rename and join a domain at the same time. I renamed it to Client01 and under memeber of we selected domain corp.local. It asked for the admin username and password and it welcomed us to the domain as seen below.
 <img width="1495" height="859" alt="Screenshot 2026-07-09 230841" src="https://github.com/user-attachments/assets/3aa03770-b40e-4e00-a558-a9870315320b" />
 
@@ -89,6 +91,11 @@ Why did I do this? Well because I know that companies use wallpaper policies to 
 
 Now I will show how to force apply a policy. In order to do that, I will log into my client01 account, then I will open the command prompt as admin, then type "gpupdate /force" Why use that command? Because in real help desk when I make a policy change and need it to apply immediately without waiting for a restart, this is the command I'll run. You can see below that forcing the policy worked.  
 <img width="663" height="253" alt="image" src="https://github.com/user-attachments/assets/02a89630-5107-49a0-868c-2706779dee7e" />
+
+The final skill I will showcase is security groups and sahred folder access. This is important because this is how companies control who can access what. Instead of giving individual users access to folders one by one, I put them in a group and give the group access. An example would be when a new employee can't access a shared folder, I won't just change the folder permissions — I'll just add them to the right security group. Much faster and cleaner. In order to create a shared folder, I opened up my file explorer, right clicked on the C:drive, created a new folder called HR-Files, went into the properties then sharing tab, went into advanced sharing, checked sahre this folder, clicked permissions, then removed everyone from the list. I then added domain admins, and gave them full control as seen below.
+<img width="641" height="654" alt="image" src="https://github.com/user-attachments/assets/5183ebb4-4b53-49f7-a6cc-365e484885a9" />
+
+Now why did I remove everyone? Because by default Windows shares are accessible to everyone on the network. That's a security risk. In a real company every shared folder has specific permissions — only the right people can access it.
 
 
 
