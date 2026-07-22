@@ -116,6 +116,9 @@ Now I will log in as a member of the sales team, mike jones, and try the access 
 
 Why do I do these tests? Because this proves my security group is working correctly. jsmith is in HR-Team and can access the folder. mjones is in Sales and can't. In real help desk this is exactly how you'd verify permissions are set correctly after adding someone to a group.
 
+Summary of everything I did:
+I built a home Active Directory lab from scratch with Windows Server 2022 and Windows 11. I practiced creating and managing user accounts, resetting passwords, unlocking accounts, building Group Policy Objects, and controlling folder access with security groups. I also troubleshot common issues like DNS misconfigurations, permission problems, and group membership token refreshes.
+
 
 
 
