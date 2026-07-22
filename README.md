@@ -92,7 +92,7 @@ Why did I do this? Well because I know that companies use wallpaper policies to 
 Now I will show how to force apply a policy. In order to do that, I will log into my client01 account, then I will open the command prompt as admin, then type "gpupdate /force" Why use that command? Because in real help desk when I make a policy change and need it to apply immediately without waiting for a restart, this is the command I'll run. You can see below that forcing the policy worked.  
 <img width="663" height="253" alt="image" src="https://github.com/user-attachments/assets/02a89630-5107-49a0-868c-2706779dee7e" />
 
-The final skill I will showcase is security groups and sahred folder access. This is important because this is how companies control who can access what. Instead of giving individual users access to folders one by one, I put them in a group and give the group access. An example would be when a new employee can't access a shared folder, I won't just change the folder permissions — I'll just add them to the right security group. Much faster and cleaner. In order to create a shared folder, I opened up my file explorer, right clicked on the C:drive, created a new folder called HR-Files, went into the properties then sharing tab, went into advanced sharing, checked sahre this folder, clicked permissions, then removed everyone from the list. I then added domain admins, and gave them full control as seen below.
+The final skill I will showcase is security groups and shared folder access. This is important because this is how companies control who can access what. Instead of giving individual users access to folders one by one, I put them in a group and give the group access. An example would be when a new employee can't access a shared folder, I won't just change the folder permissions — I'll just add them to the right security group. Much faster and cleaner. In order to create a shared folder, I opened up my file explorer, right clicked on the C:drive, created a new folder called HR-Files, went into the properties then sharing tab, went into advanced sharing, checked sahre this folder, clicked permissions, then removed everyone from the list. I then added domain admins, and gave them full control as seen below.
 <img width="641" height="654" alt="image" src="https://github.com/user-attachments/assets/5183ebb4-4b53-49f7-a6cc-365e484885a9" />
 
 Now why did I remove everyone? Because by default Windows shares are accessible to everyone on the network. That's a security risk. In a real company every shared folder has specific permissions — only the right people can access it.
@@ -107,6 +107,15 @@ Now I will give the HR-Team access to the folder, so I went to file explorer aga
 <img width="748" height="642" alt="image" src="https://github.com/user-attachments/assets/8aebbf4a-b588-4d25-9387-a4c19d4e6ef2" />
 
 Why Read & Execute and not Full Control? Because in real companies I'll give users the minimum permissions they need — this is called the principle of least privilege. HR staff need to read files, not delete or modify everything. This will limit damage if an account gets compromised.
+
+I need to test that I gave the permissions to the HR-Team. So I'll log in as a user in the HR-team, jane smith and try and access the folder from there. As you can see below, I'm able to access the folder.
+<img width="937" height="655" alt="image" src="https://github.com/user-attachments/assets/e8011431-9294-4d2b-b5dc-dc5b1ce6de71" />
+
+Now I will log in as a member of the sales team, mike jones, and try the access the HR-Folder, it should give me a permission denied pop up which means I successfully created a shared folder with proper security access. As seen below it worked!
+<img width="1024" height="851" alt="image" src="https://github.com/user-attachments/assets/66702157-f45b-4d2d-acc6-378a1eacab12" />
+
+Why do I do these tests? Because this proves my security group is working correctly. jsmith is in HR-Team and can access the folder. mjones is in Sales and can't. In real help desk this is exactly how you'd verify permissions are set correctly after adding someone to a group.
+
 
 
 
