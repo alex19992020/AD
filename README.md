@@ -128,8 +128,12 @@ Why do I use event viewer? Because at a real company, when a user calls saying "
 Below is my security events, I know that each event has an event ID, which is a number that tells you what happened, the date/time, which tells me when it happened, and a level, which tells me information, warning, or error.
 <img width="878" height="545" alt="image" src="https://github.com/user-attachments/assets/ddb1793b-b30b-4bc8-8ddf-fdd94e97b2bb" />
 
-Below are the most important event ID's that I need to know as an IT/Help desk employee,
+Below are the most important event ID's that I need to know as a IT/Help desk employee,
 <img width="404" height="281" alt="image" src="https://github.com/user-attachments/assets/07059cdf-ad19-43b7-a491-b8e5b19f6ad9" />
+
+Now I will simulate a failed login by logging in as a user on the client01 VM and typing the wrong password for user jsmith 4 times. I will then go back to the event viewer and refresh it and look for event ID 4625, which will be my failed attempts. Below I have filtered for event ID 4625 and you can see my failed logon attempts.
+<img width="1017" height="845" alt="image" src="https://github.com/user-attachments/assets/915e8deb-72ea-427c-a5ee-f6424378b260" />
+
 
 
 
