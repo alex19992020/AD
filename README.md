@@ -167,6 +167,7 @@ Now I will log back into jsmith, who is a part of the HR department, and when I 
 This is important because these scenarios happen frequently, New employee joins HR, IT creates their account in the HR OU, They log into any domain computer for the first time, H: drive appears automatically — no manual setup needed. If they call saying "I don't have my H: drive" I know to check their OU and group membership
 
 THIS IS MY FULL AD LAB COMPLETED!!!
+
 <img width="492" height="350" alt="image" src="https://github.com/user-attachments/assets/305943bd-c28d-42b5-bd9b-c2bcf1a2a240" />
 
 I built a home Active Directory lab from scratch using VirtualBox and Windows Server 2022. I set up a domain controller, joined a Windows 11 client to the domain, created users and OUs for different departments, configured Group Policy for password requirements and drive mapping, set up shared folders with security group permissions, used Event Viewer to investigate failed login attempts, and practiced remoting into client machines using Remote Desktop.
