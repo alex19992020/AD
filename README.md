@@ -136,6 +136,12 @@ Now I will simulate a failed login by logging in as a user on the client01 VM an
 
 Why is it important for me to look at the event viewer as a IT/help desk employee? Because in real help desk when a user gets locked out, I'll check Event Viewer to see how many failed attempts there were and where they came from. If someone's account shows 50 failed attempts from an unknown machine at 3am I'll know that that's a security incident, not just a forgotten password. Also, in the image above when I filtered to find the event 4625, it's because in a real environment security logs can have thousands of entries per day. Knowing how to filter quickly is an essential skill. I'll use this when investigating a specific incident or looking for a pattern.
 
+Next I will practice remote desktop skills. It's important to know this because remote desktop is a tech like myself will access user computers without physically walking to them. Instead of going to someone's desk, I'll remote into their computer from theirs and fix the issue while they watch or while they're away. In real help desk environments you'll use this constantly — probably every single day. I will first log in as a user and enable remote desktop because windows by default disables remote desktop for security reasons. In a real company I would enable it through Group Policy automatically on all machines when they join the domain — so every computer is ready to be remoted into without having to touch each one individually.
+
+Below, you can see that I'm about to remote connect to user jsmith from my DC01 computer. I know that client01=jsmith has an IPv4 of 10.0.0.20 so thats what I will use to connect.
+<img width="1009" height="852" alt="image" src="https://github.com/user-attachments/assets/6ffc6f9e-3a16-459e-a1e6-299cb1ef73b0" />
+
+
 
 
 
