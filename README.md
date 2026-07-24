@@ -146,6 +146,35 @@ Below, you can see that I have successfully remote connected into client01 and v
 
 Why is this important? Because in a real company when a user calls with a problem, I'll ask for their computer name, open mstsc, type their computer name, and I'll instantly on their machine. I can see exactly what they see, move their mouse, open programs, fix issues — all without leaving my desk. This is the core of remote help desk support.
 
+Now, I will show how to map a network drive via GPO. I'm doing this because right now jsmith can access HR-Files but she has to type "\\DC01\HR-Files" manually every time. In a real company that's not how it works — when an employee logs in, their network drives appear automatically. That's done through Group Policy.
+
+Below, I am going into the GP management and under the HR OU creating a new GPO in the domain called "HR Drive Mapping"
+<img width="1069" height="754" alt="image" src="https://github.com/user-attachments/assets/6ad77bb7-9644-4606-9cae-2b260827086c" />
+Why did I do this? Because I only want HR users to get this mapped drive, not everyone in the company. By linking the GPO to the HR OU instead of the whole domain, it only applies to users inside that OU. This is one of the most powerful things about OUs — I can target policies to specific departments.
+
+Now below I am creating the new mapped drive for HR and putting the location as we have before which is "\\DC01\HR-FIles"
+<img width="1100" height="847" alt="image" src="https://github.com/user-attachments/assets/7c11837d-130b-4318-b22f-cb647587d048" />
+
+Why did I use H? Because In real companies the H: drive traditionally stands for Home or department drive. I'll often hear users say "I can't access my H: drive" — now I know exactly what that means and how it's set up.
+Why Reconnect is checked? Because this makes Windows reconnect the drive automatically every time the user logs in. Without it the drive might disappear after a restart.
+
+In order to make sure the policy goes through I forced it in the command terminal as seen below
+<img width="435" height="245" alt="image" src="https://github.com/user-attachments/assets/48cce2e3-c5e4-4db9-b6b3-d464b534af11" />
+
+Now I will log back into jsmith, who is a part of the HR department, and when I open up the file explorer, I should go down to this PC and I should see a HR Files(H:) drive there already. As you can see below, we have sucessfully mapped a network drive.
+<img width="783" height="587" alt="Screenshot 2026-07-23 211456" src="https://github.com/user-attachments/assets/555aaea9-2d9d-4a50-a45e-c7357c51dc6a" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
