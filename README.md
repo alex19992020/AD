@@ -164,6 +164,17 @@ In order to make sure the policy goes through I forced it in the command termina
 Now I will log back into jsmith, who is a part of the HR department, and when I open up the file explorer, I should go down to this PC and I should see a HR Files(H:) drive there already. As you can see below, we have sucessfully mapped a network drive.
 <img width="783" height="587" alt="Screenshot 2026-07-23 211456" src="https://github.com/user-attachments/assets/555aaea9-2d9d-4a50-a45e-c7357c51dc6a" />
 
+This is important because these scenarios happen frequently, New employee joins HR, IT creates their account in the HR OU, They log into any domain computer for the first time, H: drive appears automatically — no manual setup needed. If they call saying "I don't have my H: drive" I know to check their OU and group membership
+
+THIS IS MY FULL AD LAB COMPLETED!!!
+<img width="492" height="350" alt="image" src="https://github.com/user-attachments/assets/305943bd-c28d-42b5-bd9b-c2bcf1a2a240" />
+I built a home Active Directory lab from scratch using VirtualBox and Windows Server 2022. I set up a domain controller, joined a Windows 11 client to the domain, created users and OUs for different departments, configured Group Policy for password requirements and drive mapping, set up shared folders with security group permissions, used Event Viewer to investigate failed login attempts, and practiced remoting into client machines using Remote Desktop.
+
+
+
+
+
+
 
 
 
