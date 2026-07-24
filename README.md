@@ -141,6 +141,11 @@ Next I will practice remote desktop skills. It's important to know this because 
 Below, you can see that I'm about to remote connect to user jsmith from my DC01 computer. I know that client01=jsmith has an IPv4 of 10.0.0.20 so thats what I will use to connect.
 <img width="1009" height="852" alt="image" src="https://github.com/user-attachments/assets/6ffc6f9e-3a16-459e-a1e6-299cb1ef73b0" />
 
+Below, you can see that I have successfully remote connected into client01 and veritfied by using command hostname on the terminal.
+<img width="1105" height="852" alt="image" src="https://github.com/user-attachments/assets/3cc5491f-06bb-429f-a59d-ea25002880ad" />
+
+Why is this important? Because in a real company when a user calls with a problem, I'll ask for their computer name, open mstsc, type their computer name, and I'll instantly on their machine. I can see exactly what they see, move their mouse, open programs, fix issues — all without leaving my desk. This is the core of remote help desk support.
+
 
 
 
