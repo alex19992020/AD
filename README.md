@@ -11,6 +11,7 @@ Why I built it: I'm moving into IT support from a software development backgroun
 Domain structure: corp.local → OUs: HR, IT, Sales · Security group: HR-Team · Test users: jsmith (HR), mjones (Sales)
 
 Help desk scenarios I can handle
+
 Ticket:  ||  What I did in the lab:
 "I forgot my password"	||  Reset with a temporary password + User must change password at next logon
 "My account is locked"	||  Unlocked in ADUC, then confirmed the failed attempts in Event Viewer (ID 4625)
@@ -58,6 +59,7 @@ Takeaway: For "I can't open the share" tickets, check both layers. A common real
 
 
 Key decisions and why
+
 Static IPs, with the client's DNS pointed at DC01 - Clients find the domain controller through DNS records that DC01 hosts. If a client used my router's or a public DNS server, it couldn't locate corp.local to join or log on. A DC's address can't change underneath its clients.
 Role-based server names (DC01) - You can tell a server's job at a glance; a file server would be FS01. This is common practice in real environments.
 Departmental OUs - GPOs can't be linked to the default Users container. OUs let me target policy by department. The HR drive mapping applies only to HR.
@@ -69,6 +71,7 @@ Drive mapping GPO linked to the HR OU, with Reconnect enabled - Only HR gets the
 Filtered Event Viewer by ID 4625 - Real security logs have thousands of events a day. Filtering is how you answer "how many failed attempts, when, and from where?"
 
 What I'd do differently
+
 Use a subdomain of a real domain instead of .local. I picked .local because it felt "internal only." Microsoft recommends a subdomain of a domain you own (e.g., ad.example.com), because .local collides with multicast DNS (Bonjour) and can't get public certificates.
 Stop using the built-in Administrator for daily work. I logged into the client as CORP\Administrator. In production, admins use a normal account for daily work and a separate admin account only when needed.
 Put the file share on a member server, not the DC. HR-Files lives on DC01's C: drive. A dedicated file server (FS01) keeps the DC's attack surface small.
