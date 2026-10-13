@@ -32,6 +32,7 @@ Fix: In the VM's settings, raised RAM, enabled EFI with Secure Boot, and added a
 Takeaway: On a VM, the "BIOS" is the hypervisor's settings. Same checklist as real hardware, different place to fix it.
 
 these are what if's
+
 2. Client01 couldn't join the domain
 Symptom: Joining corp.local failed with "An Active Directory Domain Controller (AD DC) for the domain 'corp.local' could not be contacted."
 Investigation: ping 10.0.0.10 succeeded, so the network path to DC01 was fine. ipconfig /all showed Client01's DNS server was my router, not DC01, and nslookup corp.local failed.
