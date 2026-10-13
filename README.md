@@ -32,31 +32,27 @@ Investigation: Compared the error against the Windows 11 hardware requirements. 
 Fix: In the VM's settings, raised RAM, enabled EFI with Secure Boot, and added a TPM 2.0 device. 
 Takeaway: On a VM, the "BIOS" is the hypervisor's settings. Same checklist as real hardware, different place to fix it.
 
-these are what if's
-
 2. Client01 couldn't join the domain
-Symptom: Joining corp.local failed with "An Active Directory Domain Controller (AD DC) for the domain 'corp.local' could not be contacted."
-Investigation: ping 10.0.0.10 succeeded, so the network path to DC01 was fine. ipconfig /all showed Client01's DNS server was my router, not DC01, and nslookup corp.local failed.
-Root cause: Clients locate a domain controller through DNS records that only DC01 hosts. My router's DNS had never heard of corp.local.
-Fix: Set Client01's preferred DNS server to 10.0.0.10, ran ipconfig /flushdns, confirmed nslookup corp.local resolved to DC01, then retried the join. It succeeded.
-Takeaway: "Can ping it but can't join" points to name resolution, not connectivity. In AD, DNS problems usually show up as authentication or "domain not found" errors.
+Symptom 1: In System Properties, the *Member of* options were greyed out, so I couldn't select Domain.
+Cause and fix: I had opened System Properties as a standard user. Changing domain membership requires local admin rights, so I reopened `sysdm.cpl` with **Run as administrator**, and the options unlocked.
+Symptom 2: The join then failed with *"An Active Directory Domain Controller (AD DC) for the domain 'corp.local' could not be contacted."*
+Investigation: Confirmed DC01 was powered on and ran `ping 10.0.0.10` from Client01. It replied, so the network path between the VMs was fine. Client01's preferred DNS was already set to DC01 (`10.0.0.10`).
+Fix: Retried the join from the elevated `sysdm.cpl`, and it succeeded.
+Root cause: Not confirmed. I didn't run `ipconfig /all` or `nslookup corp.local` while the join was failing, so I can't tell whether it was a timing issue (for example, DC01's DNS service still starting up) or something else.
+Takeaway:"Can ping it but can't join" rules out basic connectivity and points to name resolution or the DC's services. Next time I'd run `nslookup corp.local` and `nltest /dsgetdc:corp.local` before retrying, so the fix is backed by evidence instead of a retry that happened to work.
 
-3. User was added to HR-Team but still got "Access denied"
-Symptom: I added jsmith to HR-Team while she was signed in to Client01. Opening \\DC01\HR-Files still returned Access is denied.
-Investigation: ADUC showed her as a member of HR-Team, but whoami /groups on Client01 didn't list CORP\HR-Team.
-Root cause: A user's group memberships are captured in their access token at sign-in. Changes made in AD afterward aren't in the token she was still using.
-Fix: Had her sign out and back in. whoami /groups then listed HR-Team, and the folder opened.
-Takeaway: After adding someone to a group, the first instruction is "sign out and back in." whoami /groups shows what the user's session actually has, which can differ from what AD says.
-
-4. Correct NTFS permissions, but the share still blocked HR
-Symptom: HR-Team had Read & Execute on the folder's Security (NTFS) tab, but HR users were still denied over the network at \\DC01\HR-Files.
-Investigation: The NTFS permissions were correct. Under Sharing → Advanced Sharing → Permissions, the only entry was Domain Admins, because I'd removed Everyone and hadn't added anyone else.
-Root cause: Over the network, Windows checks share permissions and NTFS permissions, and the more restrictive one wins. HR-Team had no share permission at all, so NTFS never got a say.
-Fix: Added HR-Team with Read to the share permissions. Retested: jsmith could open the folder, and mjones (Sales) was still denied.
-Takeaway: For "I can't open the share" tickets, check both layers. A common real-world pattern is to keep share permissions broad (e.g., Authenticated Users) and do the actual access control in NTFS, so there's only one place to look.
-
-
-
+3. jsmith couldn't open HR-Files (two problems at once)
+Symptom:Signed in to Client01 as `jsmith` (HR), opening `\\DC01\HR-Files` returned *Windows cannot access*. She should have had access through the HR-Team group.
+Problem A: no share permission.** The Security (NTFS) tab gave HR-Team Read & Execute, but Sharing → Advanced Sharing → Permissions listed only Domain Admins. I had removed Everyone when creating the share and never added HR-Team. Over the network, Windows checks both share and NTFS permissions and applies the more restrictive one. With no share entry, HR-Team was blocked before NTFS was even evaluated.
+Fix A: Added HR-Team with Read to the share permissions.
+Still denied. jsmith was still blocked after Fix A, so I ruled things out:
+  - `net share` on DC01 listed HR-Files, so the folder was shared.
+  - `ping DC01` from Client01 replied, so name resolution worked.
+  - Both permission tabs showed HR-Team correctly.
+  - Signing out and back in and running `gpupdate /force` changed nothing.
+Problem B: she was never in the group.** jsmith's *Member Of* tab in Active Directory Users and Computers listed only Domain Users. My earlier "Add to a group" step hadn't saved. Every permission I'd checked was correct, but they all applied to a group she wasn't in.
+Fix B: Added HR-Team from her Member Of tab, applied the change, and had her sign out and back in. Group membership is captured in the user's access token at sign-in, so the change needed a new sign-in to take effect. After that she could open the folder, and `mjones` (Sales) was still denied.
+Takeaways: Check the user's actual group membership first, in their Member Of tab or with `whoami /groups` in their session, before touching folder permissions. I spent most of the time verifying permissions for a group she wasn't in.
 
 Key decisions and why
 
@@ -148,7 +144,7 @@ Granted HR-Team Read & Execute on the NTFS (Security) tab.
 
 <img width="748" alt="NTFS permissions for HR-Team" src="https://github.com/user-attachments/assets/8aebbf4a-b588-4d25-9387-a4c19d4e6ef2" />
 
-Share vs. NTFS permissions: when a folder is accessed over the network, both apply and the more restrictive one wins. The screenshot above shows the share before I added HR-Team. See troubleshooting entry 4.
+Share vs. NTFS permissions: when a folder is accessed over the network, both apply and the more restrictive one wins. HR-Team has **Read** on the share and **Read & Execute** on NTFS; Domain Admins keeps Full Control on the share. Getting this right took some troubleshooting (see Troubleshooting #3).
 
 Test both sides: jsmith (HR) can open the folder; mjones (Sales) gets access denied.
 
