@@ -170,6 +170,8 @@ Drive mapping by GPO: created HR Drive Mapping linked to the HR OU, mapping \\DC
 
 <img width="1069" alt="Creating the HR Drive Mapping GPO" src="https://github.com/user-attachments/assets/6ad77bb7-9644-4606-9cae-2b260827086c" /> <img width="1100" alt="Mapped drive settings for H:" src="https://github.com/user-attachments/assets/7c11837d-130b-4318-b22f-cb647587d048" /> <img width="435" alt="gpupdate /force on Client01" src="https://github.com/user-attachments/assets/48cce2e3-c5e4-4db9-b6b3-d464b534af11" /> <img width="783" alt="H: drive appears for jsmith" src="https://github.com/user-attachments/assets/555aaea9-2d9d-4a50-a45e-c7357c51dc6a" /> </details>
 
+Tools & skills: Active Directory Domain Services · DNS · Group Policy · NTFS & share permissions · Security groups · Event Viewer · Remote Desktop · VirtualBox · Windows Server 2022 · Windows 11
+
 
 
 
