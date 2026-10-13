@@ -46,10 +46,10 @@ Symptom:Signed in to Client01 as `jsmith` (HR), opening `\\DC01\HR-Files` return
 Problem A: no share permission.** The Security (NTFS) tab gave HR-Team Read & Execute, but Sharing → Advanced Sharing → Permissions listed only Domain Admins. I had removed Everyone when creating the share and never added HR-Team. Over the network, Windows checks both share and NTFS permissions and applies the more restrictive one. With no share entry, HR-Team was blocked before NTFS was even evaluated.
 Fix A: Added HR-Team with Read to the share permissions.
 Still denied. jsmith was still blocked after Fix A, so I ruled things out:
-  - `net share` on DC01 listed HR-Files, so the folder was shared.
-  - `ping DC01` from Client01 replied, so name resolution worked.
-  - Both permission tabs showed HR-Team correctly.
-  - Signing out and back in and running `gpupdate /force` changed nothing.
+ `net share` on DC01 listed HR-Files, so the folder was shared.
+`ping DC01` from Client01 replied, so name resolution worked.
+Both permission tabs showed HR-Team correctly.
+Signing out and back in and running `gpupdate /force` changed nothing.
 Problem B: she was never in the group.** jsmith's *Member Of* tab in Active Directory Users and Computers listed only Domain Users. My earlier "Add to a group" step hadn't saved. Every permission I'd checked was correct, but they all applied to a group she wasn't in.
 Fix B: Added HR-Team from her Member Of tab, applied the change, and had her sign out and back in. Group membership is captured in the user's access token at sign-in, so the change needed a new sign-in to take effect. After that she could open the folder, and `mjones` (Sales) was still denied.
 Takeaways: Check the user's actual group membership first, in their Member Of tab or with `whoami /groups` in their session, before touching folder permissions. I spent most of the time verifying permissions for a group she wasn't in.
