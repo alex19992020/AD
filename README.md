@@ -172,6 +172,62 @@ THIS IS MY FULL AD LAB COMPLETED!!!
 
 I built a home Active Directory lab from scratch using VirtualBox and Windows Server 2022. I set up a domain controller, joined a Windows 11 client to the domain, created users and OUs for different departments, configured Group Policy for password requirements and drive mapping, set up shared folders with security group permissions, used Event Viewer to investigate failed login attempts, and practiced remoting into client machines using Remote Desktop.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Active Directory Home Lab: corp.local
+
+A Windows Server 2022 domain built from scratch in VirtualBox to practice the work a Tier 1 help desk technician does every day: onboarding and offboarding users, password resets and lockouts, Group Policy, file share permissions, log investigation, and remote support.
+
+Why I built it: I'm moving into IT support from a software development background. I wanted hands-on experience with the system most corporate help desk tickets touch, and I wanted to understand why things are configured the way they are, not just which buttons to click.
+
+🔗 Part of a series: I later automated many of these tasks with PowerShell. See my PowerShell Help Desk Toolkit ✏️
+
+<img width="706" height="623" alt="image" src="https://github.com/user-attachments/assets/be8f5da1-f1d6-4bff-b73c-7703bbdda75b" />
+
+Domain structure: corp.local → OUs: HR, IT, Sales · Security group: HR-Team · Test users: jsmith (HR), mjones (Sales)
+
+Help desk scenarios I can handle
+Ticket:  ||  What I did in the lab:
+"I forgot my password"	||  Reset with a temporary password + User must change password at next logon
+"My account is locked"	||  Unlocked in ADUC, then confirmed the failed attempts in Event Viewer (ID 4625)
+Employee leaving / on leave	 ||  Disabled the account instead of deleting it, which preserves data and allows rollback
+"My password isn't being accepted"	||  Know the domain password policy requirements because I configured them
+"I can't open the HR folder"	||  Granted access through a security group, then tested with an allowed and a denied user
+"My H: drive is missing"	||  Drive mapped by a GPO linked to the HR OU, so I know to check OU placement, group membership, and gpresult /r
+"Something's wrong with my PC"	||  Connected over Remote Desktop and verified the session with hostname
+New policy isn't applying	 ||  Forced it with gpupdate /force
+
+Troubleshooting log
+
+Things that broke and how I fixed them, written up the way I'd write a ticket.
+
+1. Windows 11 wouldn't install on the client VM
+Symptom: Setup said the VM didn't meet Windows 11 requirements: not enough memory, no TPM 2.0, Secure Boot off.
+Investigation: Compared the error against the Windows 11 hardware requirements. I'd seen the same thing building my own PC.
+Fix: In the VM's settings, raised RAM, enabled EFI with Secure Boot, and added a TPM 2.0 device. ✏️ confirm the exact settings you changed
+Takeaway: On a VM, the "BIOS" is the hypervisor's settings. Same checklist as real hardware, different place to fix it.
+
+
+Key decisions and why
+Static IPs, with the client's DNS pointed at DC01 - Clients find the domain controller through DNS records that DC01 hosts. If a client used my router's or a public DNS server, it couldn't locate corp.local to join or log on. A DC's address can't change underneath its clients.
+Role-based server names (DC01) - You can tell a server's job at a glance; a file server would be FS01. This is common practice in real environments.
+Departmental OUs - GPOs can't be linked to the default Users container. OUs let me target policy by department. The HR drive mapping applies only to HR.
+Disable, don't delete - Offboarding starts with disabling so data and group memberships are preserved and the change can be reversed.
+Access through security groups, not individual users - Onboarding becomes "add to group" instead of editing folder permissions. Security type, not distribution, because distribution groups can't grant access to anything.
+Read & Execute for HR-Team (least privilege) - Users get the minimum access they need, which limits damage if an account is compromised.
+Removed Everyone from the share - New shares grant Everyone read access by default. Access should be explicit.
+Drive mapping GPO linked to the HR OU, with Reconnect enabled - Only HR gets the H: drive, and it comes back at every logon.
+Filtered Event Viewer by ID 4625 - Real security logs have thousands of events a day. Filtering is how you answer "how many failed attempts, when, and from where?"
+
+What I'd do differently
+Use a subdomain of a real domain instead of .local. I picked .local because it felt "internal only." Microsoft recommends a subdomain of a domain you own (e.g., ad.example.com), because .local collides with multicast DNS (Bonjour) and can't get public certificates.
+Stop using the built-in Administrator for daily work. I logged into the client as CORP\Administrator. In production, admins use a normal account for daily work and a separate admin account only when needed.
+Put the file share on a member server, not the DC. HR-Files lives on DC01's C: drive. A dedicated file server (FS01) keeps the DC's attack surface small.
+Enforce password policy correctly per group. I originally assumed I could give HR a stricter password policy by linking a GPO to the HR OU. Domain account password policy only applies at the domain level. Per-group policies require Fine-Grained Password Policies.
+Enable RDP through Group Policy instead of turning it on manually on each machine.
+Use the right tool for "watch while I fix it." RDP takes over the session, so the user can't watch. For side-by-side help I'd use Quick Assist or Remote Assistance.
+Add a second DC. One DC is a single point of failure for every login in the domain.
+
 
 
 
