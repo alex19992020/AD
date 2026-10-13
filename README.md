@@ -180,7 +180,7 @@ A Windows Server 2022 domain built from scratch in VirtualBox to practice the wo
 
 Why I built it: I'm moving into IT support from a software development background. I wanted hands-on experience with the system most corporate help desk tickets touch, and I wanted to understand why things are configured the way they are, not just which buttons to click.
 
-🔗 Part of a series: I later automated many of these tasks with PowerShell. See my PowerShell Help Desk Toolkit ✏️
+🔗 Part of a series: I later automated many of these tasks with PowerShell. See my PowerShell Help Desk Toolkit 
 
 <img width="706" height="623" alt="image" src="https://github.com/user-attachments/assets/be8f5da1-f1d6-4bff-b73c-7703bbdda75b" />
 
@@ -204,8 +204,10 @@ Things that broke and how I fixed them, written up the way I'd write a ticket.
 1. Windows 11 wouldn't install on the client VM
 Symptom: Setup said the VM didn't meet Windows 11 requirements: not enough memory, no TPM 2.0, Secure Boot off.
 Investigation: Compared the error against the Windows 11 hardware requirements. I'd seen the same thing building my own PC.
-Fix: In the VM's settings, raised RAM, enabled EFI with Secure Boot, and added a TPM 2.0 device. ✏️ confirm the exact settings you changed
+Fix: In the VM's settings, raised RAM, enabled EFI with Secure Boot, and added a TPM 2.0 device. 
 Takeaway: On a VM, the "BIOS" is the hypervisor's settings. Same checklist as real hardware, different place to fix it.
+
+
 
 
 Key decisions and why
